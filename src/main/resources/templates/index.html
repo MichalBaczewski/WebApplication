@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring MVC</title>
+</head>
+<body>
+    <H1>
+        Welcome in Spring MVC App.
+    </H1>
+    <div th:if="${visitor != null}">
+
+        <H2 th:text="'Welcome: ' + ${visitor} + '!'"></H2>
+    </div>
+    <h2><a th:href="${'/customer/list'}">Customer list</a></h2>
+    <h4>
+        <p>
+                <span sec:authorize="isAuthenticated()" style="display: inline-block;">
+                    | Logged user: <span sec:authentication="name"></span> |
+                    Roles: <span sec:authentication="principal.authorities"></span> |
+                    <a th:href="@{/logout}">Sign Out</a>
+                </span>
+        </p>
+    </h4>
+
+</body>
+</html>

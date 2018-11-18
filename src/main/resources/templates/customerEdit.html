@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Custorem Edit</title>
+</head>
+<body>
+<h3>Editation</h3>
+
+<form method="post" action="#"
+      th:action="@{/customer/update}"
+      th:object="${customer}">
+    <table>
+        <tr>
+            <td>Id</td>
+            <td>
+                <input type="text"
+                       th:field="*{id}" readonly></input>
+            </td>
+        </tr>
+        <tr>
+            <td>First name</td>
+            <td>
+                <input type="text"
+                th:field="*{firstName}"></input>
+            </td>
+        </tr>
+        <tr>
+            <td>Last name</td>
+            <td>
+                <input type="text"
+                       th:field="*{lastName}"></input>
+            </td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td>
+                <input type="text"
+                       th:field="*{phoneNumber}"></input>
+            </td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>
+                <input type="text"
+                       th:field="*{email}"></input>
+            </td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td>
+                <input type="text"
+                       th:field="*{addressLine}"></input>
+            </td>
+        </tr>
+        <tr>
+            <td>City</td>
+            <td>
+                <input type="text"
+                       th:field="*{city}"></input>
+            </td>
+        </tr>
+        <tr>
+            <td>Zip Code</td>
+            <td>
+                <input type="text"
+                       th:field="*{zipCode}"></input>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"><button type="submit" th:text="${button}">Update</button> </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

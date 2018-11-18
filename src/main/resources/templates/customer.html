@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer</title>
+</head>
+<body>
+<a th:href="${'/customer/list'}">Customer list</a>
+<ul th:object="${customer}">
+    <li th:text="'ID: ' + *{id}"></li>
+    <li><b>First name:</b>
+        <div th:text="*{firstName}">
+        </div>
+    </li>
+    <li><b>Last Name:</b>
+        <div th:text="*{lastName}">
+        </div>
+    </li>
+    <li><b>Address:</b>
+        <div th:text="*{addressLine}">
+        </div>
+    </li>
+    <li><b>E-mail:</b>
+        <div th:text="*{email}">
+        </div>
+    </li>
+    <li><b>Phone:</b>
+        <div th:text="*{phoneNumber}">
+        </div>
+    </li>
+    <li><b>Zip Code:</b>
+        <div th:text="*{zipCode}">
+        </div>
+    </li>
+    <li><b>City:</b>
+        <div th:text="*{city}">
+        </div>
+    </li>
+</ul>
+</body>
+</html>
