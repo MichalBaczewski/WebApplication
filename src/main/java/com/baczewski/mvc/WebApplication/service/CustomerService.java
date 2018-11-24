@@ -1,7 +1,6 @@
 package com.baczewski.mvc.WebApplication.service;
 
 import com.baczewski.mvc.WebApplication.domain.Customer;
-
 import java.util.List;
 
 public interface CustomerService {

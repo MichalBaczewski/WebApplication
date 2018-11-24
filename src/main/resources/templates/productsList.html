@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product list</title>
+    <link rel="stylesheet" href="../static/css/styl.css" th:href="@{/css/styl.css}">
+</head>
+<body>
+<p align="right">
+    <a th:href="${'/logout'}">Logout</a>
+</p>
+
+<a th:href="${'/product/new'}">Add new product</a>
+<table>
+    <b>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Tools</th>
+        </tr>
+    </b>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.id}"> 1 </td>
+        <td th:text="${product.name}"> Lenor Gold </td>
+        <td th:text="${product.quantity}"> 12 </td>
+        <td >
+            <a th:href="${'/product/' + product.id}">Show details</a>
+            <a th:href="${'/product/' + product.id}">Edit</a>
+            <a th:href="${'/product/' + product.id}">Delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

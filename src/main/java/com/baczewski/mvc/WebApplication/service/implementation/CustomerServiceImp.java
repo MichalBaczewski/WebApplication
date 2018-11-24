@@ -14,7 +14,7 @@ public class CustomerServiceImp implements CustomerService {
     private Map<Integer, Customer> customers;
 
     @Autowired
-    CustomerRepository repository;
+    CustomerRepository customerRepository;
 
     public CustomerServiceImp() {
         customers = new HashMap<>();
@@ -40,8 +40,8 @@ public class CustomerServiceImp implements CustomerService {
     @Override
     public Customer getOne(Integer id) {
         Customer customer = null;
-        if (repository.findById(id).isPresent()) {
-            customer = repository.findById(id).get();
+        if (customerRepository.findById(id).isPresent()) {
+            customer = customerRepository.findById(id).get();
         }
         return customer;
     }
@@ -49,7 +49,7 @@ public class CustomerServiceImp implements CustomerService {
     @Override
     public List<Customer> getAll() {
 
-        Iterable<Customer> all = repository.findAll();
+        Iterable<Customer> all = customerRepository.findAll();
         LinkedList<Customer> list = new LinkedList<>();
         for (Customer c : all) {
             list.add(c);
@@ -59,20 +59,31 @@ public class CustomerServiceImp implements CustomerService {
 
     @Override
     public Customer update(Customer customer) {
-        customers.put(customer.getId(),customer);
-        return customers.get(customer.getId());
+        customerRepository.save(customer);
+        Customer newCustomer = null;
+        if(customerRepository.findById(customer.getId()).isPresent()) {
+            newCustomer = customerRepository.findById(customer.getId()).get();
+        }
+        return newCustomer;
+//        customers.put(customer.getId(),customer);
+//        return customers.get(customer.getId());
+
     }
 
     @Override
     public void delete(Integer id) {
-        customers.remove(id);
+        customerRepository.deleteById(id);
     }
 
     @Override
     public Customer add(Customer customer) {
         customer.setId(generatorIdKey());
-        customers.put(customer.getId(),customer);
-        return customers.get(customer.getId());
+        customerRepository.save(customer);
+        Customer newCustomer = null;
+        if(customerRepository.findById(customer.getId()).isPresent()) {
+            newCustomer = customerRepository.findById(customer.getId()).get();
+        }
+        return newCustomer;
     }
 
     private Integer generatorIdKey() {
@@ -84,7 +95,7 @@ public class CustomerServiceImp implements CustomerService {
  *  private Map<Integer, Customer> customers;
 
     @Autowired
-    CustomerRepository repository;
+    CustomerRepository customerRepository;
 
     public CustomerServiceImp() {
         customers = new HashMap<>();
@@ -115,7 +126,7 @@ public class CustomerServiceImp implements CustomerService {
     @Override
     public List<Customer> getAll() {
 
-        Iterable<Customer> all = repository.findAll();
+        Iterable<Customer> all = customerRepository.findAll();
         LinkedList<Customer> list = new LinkedList<>();
         for (Customer c : all) {
             list.add(c);

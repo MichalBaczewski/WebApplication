@@ -13,13 +13,13 @@ public class HelloController {
         return "index";
     }
 
-    @RequestMapping("/{name}")
-    public String sayHelloToYou(
-            Model model,
-        @PathVariable String name)
-    {
-        model.addAttribute("visitor", name);
-        return "index";
-    }
+//    @RequestMapping("/{name}")
+//    public String sayHelloToYou(
+//            Model model,
+//        @PathVariable String name)
+//    {
+//        model.addAttribute("visitor", name);
+//        return "index";
+//    }
 
 }
