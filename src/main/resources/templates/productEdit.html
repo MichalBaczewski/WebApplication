@@ -7,8 +7,8 @@
 <body>
 <h3 th:text="${title}"></h3>
 <form method="post" action="#"
-      th:action="@{/customer/update}"
-      th:object="${customer}">
+      th:action="@{/product/update}"
+      th:object="${product}">
     <table>
         <tr>
             <td>Id</td>
@@ -18,56 +18,42 @@
             </td>
         </tr>
         <tr>
-            <td>First name</td>
+            <td>Name</td>
             <td>
                 <input type="text"
-                th:field="*{firstName}"></input>
+                th:field="*{name}"></input>
             </td>
         </tr>
         <tr>
-            <td>Last name</td>
+            <td>Price</td>
             <td>
                 <input type="text"
-                       th:field="*{lastName}"></input>
+                       th:field="*{price}"></input>
             </td>
         </tr>
         <tr>
-            <td>Phone</td>
+            <td>Quantity</td>
             <td>
                 <input type="text"
-                       th:field="*{phoneNumber}"></input>
+                       th:field="*{quantity}"></input>
             </td>
         </tr>
         <tr>
-            <td>Email</td>
+            <td>Description</td>
             <td>
                 <input type="text"
-                       th:field="*{email}"></input>
+                       th:field="*{description}"></input>
             </td>
         </tr>
         <tr>
-            <td>Address</td>
+            <td>imageUrl</td>
             <td>
                 <input type="text"
-                       th:field="*{addressLine}"></input>
+                       th:field="*{imageUrl}"></input>
             </td>
         </tr>
         <tr>
-            <td>City</td>
-            <td>
-                <input type="text"
-                       th:field="*{city}"></input>
-            </td>
-        </tr>
-        <tr>
-            <td>Zip Code</td>
-            <td>
-                <input type="text"
-                       th:field="*{zipCode}"></input>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2"><button type="submit" th:text="${button}">Update</button> </td>
+            <td colspan="2"><button type="submit" th:text="${button}">Update</button></td>
         </tr>
     </table>
 </form>

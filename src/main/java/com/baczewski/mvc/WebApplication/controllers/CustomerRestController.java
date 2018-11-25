@@ -24,44 +24,44 @@ public class CustomerRestController {
 
     @RequestMapping(path="customers/{id}", produces = MediaType.APPLICATION_XML_VALUE)
     public Customer showUser(@PathVariable Integer id) {
-        return customerService.getOne(id);
+        return customerService.getOneCustomer(id);
     }
 
     @RequestMapping("/customers")
     public List<Customer> getCustomers(){
-        return customerService.getAll();
+        return customerService.getAllCustomers();
     }
 
     @RequestMapping("customers/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Customer deleteCustomer(@PathVariable Integer id){
-        customerService.delete(id);
-        return customerService.getOne(id);
+        customerService.deleteCustomer(id);
+        return customerService.getOneCustomer(id);
     }
 
-/*    @RequestMapping("/update/{id}")
+/*    @RequestMapping("/saveOrUpdateCustomer/{id}")
     public String updateCustomer(@PathVariable Integer id,
     Model model){
-        Customer customer = customerService.getOne(id);
+        Customer customer = customerService.getOneCustomer(id);
         model.addAttribute(customer);
         model.addAttribute("title", "Update");
         model.addAttribute("button", "Update customer");
         return "customerEdit";
     }
 
-    @RequestMapping("/update")
+    @RequestMapping("/saveOrUpdateCustomer")
     public String saveCustomer(Customer customer) {
-        Customer update;
+        Customer saveOrUpdateCustomer;
         if(customer.getId() != null) {
-            update = customerService.update(customer);
+            saveOrUpdateCustomer = customerService.saveOrUpdateCustomer(customer);
         } else {
-            update = customerService.add(customer);
+            saveOrUpdateCustomer = customerService.addCustomer(customer);
         }
-        return "redirect:/customer/" + update.getId();
+        return "redirect:/customer/" + saveOrUpdateCustomer.getId();
     }*/
 
     @PostMapping(path = "customers/new", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void saveOrUpdateCustomer(@RequestBody Customer customer){
-        customerService.add(customer);
+        customerService.addCustomer(customer);
     }
 }

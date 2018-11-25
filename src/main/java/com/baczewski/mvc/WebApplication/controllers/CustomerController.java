@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import java.util.List;
 
 @Controller
@@ -26,28 +25,28 @@ public class CustomerController {
     public String showUser(
             @PathVariable Integer id,
             Model model) {
-        Customer customer = customerService.getOne(id);
+        Customer customer = customerService.getOneCustomer(id);
         model.addAttribute("customer", customer);
         return "customer";
     }
 
     @RequestMapping("/list")
     public String allCustomers(Model model){
-        List<Customer> allCustomers = customerService.getAll();
+        List<Customer> allCustomers = customerService.getAllCustomers();
         model.addAttribute("customers", allCustomers);
         return "customersList";
     }
 
     @RequestMapping("/delete/{id}")
     public String deleteCustomer(@PathVariable Integer id){
-        customerService.delete(id);
+        customerService.deleteCustomer(id);
         return "redirect:/customer/list";
     }
 
     @RequestMapping("/update/{id}")
     public String updateCustomer(@PathVariable Integer id,
     Model model){
-        Customer customer = customerService.getOne(id);
+        Customer customer = customerService.getOneCustomer(id);
         model.addAttribute(customer);
         model.addAttribute("title", "Update");
         model.addAttribute("button", "Update customer");
@@ -58,9 +57,9 @@ public class CustomerController {
     public String saveCustomer(Customer customer) {
         Customer update;
         if(customer.getId() != null) {
-            update = customerService.update(customer);
+            update = customerService.saveOrUpdateCustomer(customer);
         } else {
-            update = customerService.add(customer);
+            update = customerService.addCustomer(customer);
         }
         return "redirect:/customer/" + update.getId();
     }

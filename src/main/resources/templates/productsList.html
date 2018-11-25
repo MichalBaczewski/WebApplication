@@ -16,6 +16,7 @@
         <tr>
             <th>Id</th>
             <th>Name</th>
+            <th>Price</th>
             <th>Quantity</th>
             <th>Tools</th>
         </tr>
@@ -23,11 +24,12 @@
     <tr th:each="product : ${products}">
         <td th:text="${product.id}"> 1 </td>
         <td th:text="${product.name}"> Lenor Gold </td>
+        <td th:text="${product.price}"> Lenor Gold </td>
         <td th:text="${product.quantity}"> 12 </td>
         <td >
             <a th:href="${'/product/' + product.id}">Show details</a>
-            <a th:href="${'/product/' + product.id}">Edit</a>
-            <a th:href="${'/product/' + product.id}">Delete</a>
+            <a th:href="${'/product/update/' + product.id}">Edit</a>
+            <a th:href="${'/product/delete/' + product.id}">Delete</a>
         </td>
     </tr>
 </table>

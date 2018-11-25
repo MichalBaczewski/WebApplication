@@ -4,21 +4,22 @@ import com.baczewski.mvc.WebApplication.domain.Customer;
 import java.util.List;
 
 public interface CustomerService {
+
     //CRUD
 
     //C
-    void save(Customer customer);
+    Customer addCustomer(Customer customer);
 
     //R
-    Customer getOne(Integer id);
-    List<Customer> getAll();
+    Customer getOneCustomer(Integer id);
+    List<Customer> getAllCustomers();
 
-    //U
-    Customer update(Customer customer);
+    //C&U
+    Customer saveOrUpdateCustomer(Customer customer);
 
     //D
-    void delete(Integer id);
+    void deleteCustomer(Integer id);
 
-    Customer add(Customer customer);
+
 
 }

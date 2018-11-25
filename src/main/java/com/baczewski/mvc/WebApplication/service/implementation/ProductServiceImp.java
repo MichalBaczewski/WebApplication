@@ -5,55 +5,44 @@ import com.baczewski.mvc.WebApplication.repository.ProductRepository;
 import com.baczewski.mvc.WebApplication.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class ProductServiceImp implements ProductService {
-
-    Map<Integer, Product> products;
 
     @Autowired
     ProductRepository productRepository;
 
     @Override
-    public void save(Product product) {
-
+    public Product getOneProduct(Integer id) {
+        return productRepository.findById(id).get();
     }
 
     @Override
-    public Product getOne(Integer id) {
-        Product product = null;
-        if(productRepository.findById(id).isPresent()) {
-            product =  productRepository.findById(id).get();
-        }
-        return product;
-    }
-
-    @Override
-    public List<Product> getAll() {
-        Iterable<Product> allCustomers = productRepository.findAll();
+    public List<Product> getAllProducts() {
+        Iterable<Product> allProducts = productRepository.findAll();
         List<Product> products = new LinkedList<>();
-        for (Product p : allCustomers) {
+        for (Product p : allProducts) {
             products.add(p);
         }
         return products;
     }
 
     @Override
-    public Product update(Product product) {
-        return null;
+    public Product saveOrUpdateProduct(Product product) {
+        productRepository.save(product);
+        return productRepository.findById(product.getId()).get();
     }
 
     @Override
-    public void delete(Integer id) {
-        products.remove(id);
+    public void deleteProduct(Integer id) {
+        productRepository.deleteById(id);
     }
 
     @Override
-    public Product add(Product product) {
-        return null;
+    public Product addProduct(Product product) {
+        productRepository.save(product);
+        return productRepository.findById(product.getId()).get();
     }
 }

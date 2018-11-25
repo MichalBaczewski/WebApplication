@@ -1,25 +1,25 @@
 package com.baczewski.mvc.WebApplication.service;
 
-
 import com.baczewski.mvc.WebApplication.domain.Product;
 import java.util.List;
 
 public interface ProductService {
+
     //CRUD
 
     //C
-    void save(Product product);
+    Product addProduct(Product product);
 
     //R
-    Product getOne(Integer id);
-    List<Product> getAll();
+    Product getOneProduct(Integer id);
+    List<Product> getAllProducts();
 
-    //U
-    Product update(Product product);
+    //C&U
+    Product saveOrUpdateProduct(Product product);
 
     //D
-    void delete(Integer id);
+    void deleteProduct(Integer id);
 
-    Product add(Product product);
+
 
 }

@@ -5,7 +5,29 @@
     <title>Product</title>
 </head>
 <body>
-<h4>Test</h4>
 <a th:href="${'/product/list'}">Product list</a>
+<ul th:object="${product}">
+    <li th:text="'ID: ' + *{id}"></li>
+    <li><b>Name:</b>
+        <div th:text="*{name}">
+        </div>
+    </li>
+    <li><b>Price:</b>
+        <div th:text="*{price}">
+        </div>
+    </li>
+    <li><b>Quantity:</b>
+        <div th:text="*{quantity}">
+        </div>
+    </li>
+    <li><b>Description:</b>
+        <div th:text="*{description}">
+        </div>
+    </li>
+    <li><b>ImageUrl:</b>
+        <div th:text="*{imageUrl}">
+        </div>
+    </li>
+</ul>
 </body>
 </html>
